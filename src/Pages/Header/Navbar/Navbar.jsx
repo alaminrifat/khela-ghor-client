@@ -22,7 +22,7 @@ const Navbar = () => {
     };
     return (
         <>
-            <div className="navbar bg-base-500 mb-0 border-b-4 border-khela w-full text-xl  ">
+            <div className="navbar bg-base-500 mb-0 border-b-4 border-warning w-full text-xl  ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -94,7 +94,7 @@ const Navbar = () => {
                         </Link>
                         <Link
                             to={"/"}
-                            className="normal-case font-bold text-3xl font-cursive text-khela"
+                            className="normal-case font-bold text-3xl font-cursive text-warning"
                         >
                             KhelaGhor
                         </Link>

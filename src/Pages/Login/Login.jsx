@@ -28,23 +28,23 @@ const Login = () => {
     };
 
     const hangleEmailLogin = (event) => {
-        // setStatus(null);
-        // setError(null);
-        // event.preventDefault();
-        // const form = event.target;
-        // const email = form.email.value;
-        // const password = form.password.value;
-        // loginWithEmail(email, password)
-        //     .then((result) => {
-        //         setError(null);
-        //         setStatus("Sign In Successfull");
-        //         setUser(result.user);
-        //         navigate(from, { replace: true });
-        //     })
-        //     .catch((error) => {
-        //         setError(error.message);
-        //     });
-        // form.reset();
+        setStatus(null);
+        setError(null);
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        loginWithEmail(email, password)
+            .then((result) => {
+                setError(null);
+                setStatus("Sign In Successfull");
+                setUser(result.user);
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
+        form.reset();
     };
     return (
         <div>
@@ -52,10 +52,14 @@ const Login = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse justify-center ">
                     <div className="text-center lg:text-left">
                         <div>
-                            <h1 className="text-5xl font-bold text-khela">
+                            <h1 className="text-5xl font-bold text-warning">
                                 Login now!
                             </h1>
-                            <img src={logo} alt="" className="ps-0 w-9/12 py-5" />
+                            <img
+                                src={logo}
+                                alt=""
+                                className="ps-0 w-9/12 py-5"
+                            />
                         </div>
                     </div>
                     <Form
@@ -108,7 +112,10 @@ const Login = () => {
                                 )}
                             </div>
                             <div className="form-control mt-2">
-                                <button className="btn btn-warning" type="submit">
+                                <button
+                                    className="btn btn-warning"
+                                    type="submit"
+                                >
                                     Login
                                 </button>
                                 <button

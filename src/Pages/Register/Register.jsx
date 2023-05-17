@@ -70,7 +70,7 @@ const Register = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse gap-16">
                 <div className="text-center lg:text-left">
                         <div>
-                            <h1 className="text-5xl font-bold text-khela">
+                            <h1 className="text-5xl font-bold text-warning">
                                 Register now!
                             </h1>
                             <img src={logo} alt="" className="ps-0 w-9/12 py-5" />

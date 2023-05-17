@@ -4,12 +4,12 @@ const Footer = () => {
         window.scrollTo(0,0);
       }
     return (
-        <footer aria-label="Site Footer" className="bg-gray-100">
+        <footer aria-label="Site Footer" className="bg-gray-200 border-t-4 border-warning ">
             <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
                 <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
                     <button
                     onClick={handleClick}
-                        className="inline-block rounded-full bg-khela p-2 text-white shadow transition hover:bg-teal-500 sm:p-3 lg:p-4"
+                        className="inline-block rounded-full bg-warning p-2 text-white shadow transition hover:bg-teal-500 sm:p-3 lg:p-4"
                         href="#MainContent"
                     >
                         <span className="sr-only">Back to top</span>
