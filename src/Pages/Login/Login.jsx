@@ -28,23 +28,23 @@ const Login = () => {
     };
 
     const hangleEmailLogin = (event) => {
-        setStatus(null);
-        setError(null);
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        loginWithEmail(email, password)
-            .then((result) => {
-                setError(null);
-                setStatus("Sign In Successfull");
-                setUser(result.user);
-                navigate(from, { replace: true });
-            })
-            .catch((error) => {
-                setError(error.message);
-            });
-        form.reset();
+        // setStatus(null);
+        // setError(null);
+        // event.preventDefault();
+        // const form = event.target;
+        // const email = form.email.value;
+        // const password = form.password.value;
+        // loginWithEmail(email, password)
+        //     .then((result) => {
+        //         setError(null);
+        //         setStatus("Sign In Successfull");
+        //         setUser(result.user);
+        //         navigate(from, { replace: true });
+        //     })
+        //     .catch((error) => {
+        //         setError(error.message);
+        //     });
+        // form.reset();
     };
     return (
         <div>

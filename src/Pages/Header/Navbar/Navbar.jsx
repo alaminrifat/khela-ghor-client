@@ -3,7 +3,23 @@ import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import logo from '../../../assets/logo.png'
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+
+
 const Navbar = () => {
+    const { name, user, logOut, photo } = useContext(AuthContext);
+    // console.log(name);
+    const handleLogout = () => {
+        logOut()
+            .then((result) => {
+                Swal.fire("Logout", "LogOut Successfull", "success");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
         <>
             <div className="navbar bg-base-500 mb-0 border-b-4 border-khela w-full text-xl  ">
@@ -50,7 +66,7 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
 
-                            {/* {user?.email ? (
+                            {user?.email ? (
                             <li>
                                 <button onClick={handleLogout}>
                                     Logout
@@ -67,7 +83,7 @@ const Navbar = () => {
                                     Login
                                 </NavLink>
                             </li>
-                        )} */}
+                        )}
                         </ul>
                     </div>
                     <div className="flex items-center gap-4">
@@ -107,7 +123,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         {/* conditional Rendaring */}
-                        {/* {user ? (
+                        {user ? (
                         <li>
                             <button onClick={handleLogout}>Logout</button>
                         </li>
@@ -122,13 +138,13 @@ const Navbar = () => {
                                 Login
                             </NavLink>
                         </li>
-                    )} */}
+                    )}
                     </ul>
                 </div>
                 <div className="invisible lg:navbar-end  lg:visible me-10">
                     <div className="avatar placeholder">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-                            {/* {user ? (
+                            {user ? (
                             <img
                                 id="yes-element"
                                 src={photo}
@@ -136,11 +152,11 @@ const Navbar = () => {
                             />
                         ) : (
                             <span id="no-element">X</span>
-                        )} */}
+                        )}
                         </div>
                     </div>
-                    <Tooltip anchorSelect="#yes-element" content={name} />
-                    <Tooltip anchorSelect="#no-element" content="No User" />
+                    <Tooltip place='right' anchorSelect="#yes-element" content={name} />
+                    <Tooltip place='right' anchorSelect="#no-element" content="No User" />
                 </div>
             </div>
         </>
