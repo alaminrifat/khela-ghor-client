@@ -65,6 +65,28 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
 
+                            <li>
+                                <NavLink
+                                    to="/alltoys"
+                                    className={({ isActive }) =>
+                                        isActive ? "active" : ""
+                                    }
+                                >
+                                    All Toys
+                                </NavLink>
+                            </li>
+                            {user && (
+                                <li>
+                                    <NavLink
+                                        to="/mytoys"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
+                                        My Toy
+                                    </NavLink>
+                                </li>
+                            )}
                             {user?.email ? (
                                 <li>
                                     <button onClick={handleLogout}>
@@ -83,16 +105,6 @@ const Navbar = () => {
                                     </NavLink>
                                 </li>
                             )}
-                            <li>
-                                <NavLink
-                                    to="/alltoys"
-                                    className={({ isActive }) =>
-                                        isActive ? "active" : ""
-                                    }
-                                >
-                                    All Toys
-                                </NavLink>
-                            </li>
                         </ul>
                     </div>
                     <div className="flex items-center gap-4">
@@ -155,9 +167,7 @@ const Navbar = () => {
                                     My Toy
                                 </NavLink>
                             </li>
-                        ) 
-                            
-                        }
+                        )}
                         {user ? (
                             <li>
                                 <button onClick={handleLogout}>Logout</button>
