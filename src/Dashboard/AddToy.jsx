@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AddToy = () => {
     const { register, handleSubmit } = useForm();
+    const {user} = useContext(AuthContext);
+
     const onSubmit = (data) => {
         fetch("http://localhost:5000/addtoy", {
             method: "POST",
@@ -40,12 +44,14 @@ const AddToy = () => {
                     type="text"
                     className="p-4 border-2 w-96 rounded-lg"
                     placeholder="Seller Name"
+                    defaultValue={user?.displayName}
                     {...register("SellerName", {})}
                 />
                 <input
                     type="email"
                     className="p-4 border-2 w-96 rounded-lg"
                     placeholder="Seller Email"
+                    defaultValue={user?.email}
                     {...register("SellerEmail", { required: true })}
                 />
                 <select
@@ -75,7 +81,7 @@ const AddToy = () => {
                     {...register("Rating", {})}
                 />
                 <input
-                    type="text"
+                    type="text-area"
                     className="p-4 border-2 w-96 rounded-lg"
                     placeholder="Description"
                     {...register("Description", {})}
