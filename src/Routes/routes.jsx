@@ -9,6 +9,7 @@ import Blog from "../Pages/Blog/Blog";
 import ToyDetails from "../Pages/AllToys.jsx/ToyDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyToys from "../Pages/MyToys/MyToys";
+import EditToy from "../Pages/MyToys/EditToy";
 
 const router = createBrowserRouter([
     {
@@ -20,34 +21,59 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path:'/login',
-                element:<Login/>
+                path: "/login",
+                element: <Login />,
             },
             {
-                path:'/register',
-                element:<Register/>
+                path: "/register",
+                element: <Register />,
             },
             {
-                path:'/addtoy',
-                element:<PrivateRoute><AddToy/></PrivateRoute>
+                path: "/addtoy",
+                element: (
+                    <PrivateRoute>
+                        <AddToy />
+                    </PrivateRoute>
+                ),
             },
             {
-                path:'alltoys',
-                element:<AllToys/>
+                path: "alltoys",
+                element: <AllToys />,
             },
             {
-                path:'toy/:id',
-                element:<PrivateRoute><ToyDetails/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
+                path: "toy/:id",
+                element: (
+                    <PrivateRoute>
+                        <ToyDetails />
+                    </PrivateRoute>
+                ),
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/toy/${params.id}`, {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }),
             },
             {
-                path:'mytoys',
-                element:<MyToys/>
+                path: "mytoys",
+                element: <MyToys />,
             },
             {
-                path:'blog',
-                element:<Blog/>
-            }
+                path: "edittoy/:id",
+                element: <EditToy />,
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/toy/${params.id}`, {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }),
+            },
+            {
+                path: "blog",
+                element: <Blog />,
+            },
         ],
     },
 ]);

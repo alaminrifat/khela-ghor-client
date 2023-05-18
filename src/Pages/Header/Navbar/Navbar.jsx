@@ -2,11 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 // import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import logo from '../../../assets/logo.png'
+import logo from "../../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-
 
 const Navbar = () => {
     const { name, user, logOut, photo } = useContext(AuthContext);
@@ -67,29 +66,39 @@ const Navbar = () => {
                             </li>
 
                             {user?.email ? (
-                            <li>
-                                <button onClick={handleLogout}>
-                                    Logout
-                                </button>
-                            </li>
-                        ) : (
+                                <li>
+                                    <button onClick={handleLogout}>
+                                        Logout
+                                    </button>
+                                </li>
+                            ) : (
+                                <li>
+                                    <NavLink
+                                        to="/login"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
+                                        Login
+                                    </NavLink>
+                                </li>
+                            )}
                             <li>
                                 <NavLink
-                                    to="/login"
+                                    to="/alltoys"
                                     className={({ isActive }) =>
                                         isActive ? "active" : ""
                                     }
                                 >
-                                    Login
+                                    All Toys
                                 </NavLink>
                             </li>
-                        )}
                         </ul>
                     </div>
                     <div className="flex items-center gap-4">
                         <Link to={"/"}>
                             <div className="w-16 rounded-full ms-10">
-                                <img src={logo} className="w-16" /> 
+                                <img src={logo} className="w-16" />
                             </div>
                         </Link>
                         <Link
@@ -122,41 +131,71 @@ const Navbar = () => {
                                 Blog
                             </NavLink>
                         </li>
-                        {/* conditional Rendaring */}
-                        {user ? (
-                        <li>
-                            <button onClick={handleLogout}>Logout</button>
-                        </li>
-                    ) : (
+
                         <li>
                             <NavLink
-                                to="/login"
+                                to="/alltoys"
                                 className={({ isActive }) =>
                                     isActive ? "active" : ""
                                 }
                             >
-                                Login
+                                All Toys
                             </NavLink>
                         </li>
-                    )}
+
+                        {/* conditional Rendaring */}
+                        {user && (
+                            <li>
+                                <NavLink
+                                    to="/mytoys"
+                                    className={({ isActive }) =>
+                                        isActive ? "active" : ""
+                                    }
+                                >
+                                    My Toy
+                                </NavLink>
+                            </li>
+                        ) 
+                            
+                        }
+                        {user ? (
+                            <li>
+                                <button onClick={handleLogout}>Logout</button>
+                            </li>
+                        ) : (
+                            <li>
+                                <NavLink
+                                    to="/login"
+                                    className={({ isActive }) =>
+                                        isActive ? "active" : ""
+                                    }
+                                >
+                                    Login
+                                </NavLink>
+                            </li>
+                        )}
                     </ul>
                 </div>
                 <div className="invisible lg:navbar-end  lg:visible me-10">
                     <div className="avatar placeholder">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
                             {user ? (
-                            <img
-                                id="yes-element"
-                                src={photo}
-                                alt={name}
-                            />
-                        ) : (
-                            <span id="no-element">X</span>
-                        )}
+                                <img id="yes-element" src={photo} alt={name} />
+                            ) : (
+                                <span id="no-element">X</span>
+                            )}
                         </div>
                     </div>
-                    <Tooltip place='right' anchorSelect="#yes-element" content={name} />
-                    <Tooltip place='right' anchorSelect="#no-element" content="No User" />
+                    <Tooltip
+                        place="right"
+                        anchorSelect="#yes-element"
+                        content={name}
+                    />
+                    <Tooltip
+                        place="right"
+                        anchorSelect="#no-element"
+                        content="No User"
+                    />
                 </div>
             </div>
         </>

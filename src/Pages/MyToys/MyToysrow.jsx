@@ -12,7 +12,7 @@ const MyToysrow = ({toy,serial,handleDelete}) => {
                 <td>{Price}</td>
                 <td>{Quantity}</td>
                 <td>
-                    <Link to={`/toy/${_id}`}>
+                    <Link to={`/edittoy/${_id}`}>
                     <button className="btn btn-sm btn-warning me-2 text-white">Edit</button>
                     </Link>
                     

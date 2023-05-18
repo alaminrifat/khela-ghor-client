@@ -23,7 +23,7 @@ const MyToys = () => {
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#FBBD23",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete my toy!",
         }).then((result) => {
