@@ -18,7 +18,7 @@ const TabComponent = () => {
     };
 
     return (
-        <div className="container mx-auto mt-48">
+        <div className="container mx-auto mt-30 md:mt-48">
             <p className=" text-4xl md:text-6xl font-bold text-center  ">
                 Purchase by category
             </p>

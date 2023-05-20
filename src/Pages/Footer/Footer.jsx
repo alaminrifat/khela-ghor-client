@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 const Footer = () => {
     const handleClick = () => {
@@ -52,46 +53,46 @@ const Footer = () => {
                     <nav aria-label="Footer Nav" className="mt-12 lg:mt-0">
                         <ul className="flex flex-wrap justify-center gap-6 md:gap-8 lg:justify-end lg:gap-12">
                             <li>
-                                <a
+                                <Link
                                     className="text-gray-700 transition hover:text-gray-700/75"
-                                    href="/"
+                                    to="/"
+                                >
+                                    Home
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    className="text-gray-700 transition hover:text-gray-700/75"
+                                    to="/about"
                                 >
                                     About
-                                </a>
+                                </Link>
                             </li>
 
                             <li>
-                                <a
+                                <Link
                                     className="text-gray-700 transition hover:text-gray-700/75"
-                                    href="/"
+                                    to="/alltoys"
                                 >
-                                    Services
-                                </a>
+                                    Products
+                                </Link>
                             </li>
 
                             <li>
-                                <a
+                                <Link
                                     className="text-gray-700 transition hover:text-gray-700/75"
-                                    href="/"
-                                >
-                                    Projects
-                                </a>
-                            </li>
-
-                            <li>
-                                <a
-                                    className="text-gray-700 transition hover:text-gray-700/75"
-                                    href="/"
+                                    to="/blog"
                                 >
                                     Blog
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
                 </div>
 
                 <p className="mt-12 text-center text-sm text-gray-500 lg:text-right">
-                    Copyright &copy; 2022. All rights reserved.
+                    Copyright &copy; 2023. All rights reserved.
                 </p>
             </div>
         </footer>

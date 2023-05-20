@@ -59,20 +59,27 @@ const MyToys = () => {
         
     };
     return (
-        <div>
-            <div className="flex items-center justify-end my-10  me-10 gap-6">
+        <div className="my-10">
+            <p className=" text-2xl md:text-4xl font-bold text-center  ">
+                My Toys
+            </p>
+            <div className="flex items-center justify-end my-10  me-10 gap-6 ">
                 Sort by price -
                 <button
-                    className="btn btn-sm btn-warning text-white"
+                    className={`btn btn-sm ${
+                        sort === "asc" ? "btn-warning text-white" : "btn bg-gray-600 text-white"
+                    }`}
                     onClick={handleAscending}
                 >
                     Ascending
                 </button>
                 <button
-                    className="btn btn-sm btn-warning text-white"
+                    className={`btn btn-sm ${
+                        sort === "desc" ? "btn-warning text-white" : "btn bg-gray-600 text-white"
+                    }`}
                     onClick={handleDescending}
                 >
-                    Descending{" "}
+                    Descending
                 </button>
             </div>
             <div className="overflow-x-auto">

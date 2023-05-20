@@ -14,7 +14,7 @@ const Howitwork = () => {
     }, []);
     return (
         // <div data-aos="fade-up"></div>
-        <div className="my-36">
+        <div className="my-20 md:my-36">
             <p className=" text-4xl md:text-6xl font-bold text-center my-16  ">
                 Here how it works
             </p>
