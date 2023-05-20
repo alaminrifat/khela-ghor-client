@@ -28,6 +28,7 @@ const EditToy = () => {
         _id,
     } = toy;
     const onSubmit = (data) => {
+        // data.Price = parseInt(data.Price);
         Swal.fire({
             title: "Are you sure?",
             text: "You want to edit this toy?",

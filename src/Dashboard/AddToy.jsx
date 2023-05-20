@@ -7,6 +7,7 @@ const AddToy = () => {
     const {user} = useContext(AuthContext);
 
     const onSubmit = (data) => {
+        // data.Price = parseInt(data.Price);
         fetch("http://localhost:5000/addtoy", {
             method: "POST",
             headers: {
@@ -63,7 +64,7 @@ const AddToy = () => {
                     <option value="ScienceToys">Science Toys</option>
                 </select>
                 <input
-                    type="text"
+                    type="number"
                     className="p-4 border-2 w-96 rounded-lg"
                     placeholder="Price"
                     {...register("Price", {})}

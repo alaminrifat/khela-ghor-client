@@ -5,16 +5,17 @@ import Swal from "sweetalert2";
 
 const MyToys = () => {
     const [myToys, setMyToys] = useState([]);
+    const [sort, setSort] = useState('x');
     const { user } = useContext(AuthContext);
     const email = user?.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/mytoys?email=${email}`)
+        console.log(sort);
+        fetch(`http://localhost:5000/mytoys?email=${email}&sort=${sort}`)
             .then((res) => res.json())
             .then((data) => {
-                // console.log(data);
                 setMyToys(data);
             });
-    }, [email, myToys]);
+    }, [sort, email]);
 
     const handleDelete = (id) => {
         console.log(id);
@@ -49,33 +50,58 @@ const MyToys = () => {
             }
         });
     };
+    const handleAscending = () => {
+        setSort("asc");
+        
+    };
+    const handleDescending = () => {
+        setSort("desc");
+        
+    };
     return (
-        <div className="overflow-x-auto">
-            <table className="table table-zebra w-full">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th>Serial</th>
-                        <th>Name</th>
-                        <th>Seller</th>
-                        <th>Toy Type</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* row 1 */}
-                    {myToys.map((toy, index) => (
-                        <MyToysrow
-                            key={toy._id}
-                            toy={toy}
-                            serial={index + 1}
-                            handleDelete={handleDelete}
-                        ></MyToysrow>
-                    ))}
-                </tbody>
-            </table>
+        <div>
+            <div className="flex items-center justify-end my-10  me-10 gap-6">
+                Sort by price -
+                <button
+                    className="btn btn-sm btn-warning text-white"
+                    onClick={handleAscending}
+                >
+                    Ascending
+                </button>
+                <button
+                    className="btn btn-sm btn-warning text-white"
+                    onClick={handleDescending}
+                >
+                    Descending{" "}
+                </button>
+            </div>
+            <div className="overflow-x-auto">
+                <table className="table table-zebra w-full">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Name</th>
+                            <th>Seller</th>
+                            <th>Toy Type</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* row 1 */}
+                        {myToys.map((toy, index) => (
+                            <MyToysrow
+                                key={toy._id}
+                                toy={toy}
+                                serial={index + 1}
+                                handleDelete={handleDelete}
+                            ></MyToysrow>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
