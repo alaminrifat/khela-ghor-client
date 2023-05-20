@@ -1,11 +1,9 @@
 import { useContext, useState } from "react";
-import {  useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
-
 
 const EditToy = () => {
     const navigate = useNavigate();
@@ -28,7 +26,8 @@ const EditToy = () => {
         _id,
     } = toy;
     const onSubmit = (data) => {
-        data.Price = parseInt(data.Price);
+        data.Price = parseFloat(data.Price);
+        data.Quantity = parseInt(data.Quantity);
         data.Rating = parseFloat(data.Rating);
         Swal.fire({
             title: "Are you sure?",
@@ -55,7 +54,7 @@ const EditToy = () => {
                                 "Your Toy has been Edited.",
                                 "success"
                             );
-                            navigate('/mytoys');
+                            navigate("/mytoys");
                         }
                     });
             }
@@ -143,14 +142,12 @@ const EditToy = () => {
                                             required: true,
                                         })}
                                     >
-                                        <option value="EngineeringToys">
+                                        <option value="engineering">
                                             Engineering Toys
                                         </option>
-                                        <option value="MathToys">
-                                            Math Toys
-                                        </option>
-                                        <option value="ScienceToys">
-                                            Science Toys
+                                        <option value="board">Board Toys</option>
+                                        <option value="puzzle">
+                                            Puzzle Toys
                                         </option>
                                     </select>
                                 </td>

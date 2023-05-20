@@ -2,9 +2,9 @@ import ReactStarsRating from "react-awesome-stars-rating";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ toy }) => {
-    
     const {
         PictureUrl,
         ToyName,
@@ -22,7 +22,7 @@ const ProductCard = ({ toy }) => {
     useEffect(() => {
         AOS.init({
             duration: 500,
-            easing: 'ease-in-out',
+            easing: "ease-in-out",
         });
         AOS.refresh();
     }, []);
@@ -33,7 +33,7 @@ const ProductCard = ({ toy }) => {
         >
             <img
                 alt="Home"
-                src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                src={PictureUrl}
                 className="h-56 w-full rounded-md object-cover"
             />
 
@@ -64,9 +64,11 @@ const ProductCard = ({ toy }) => {
                         </div>
                     </div>
                     <div>
-                        <div className="btn btn-warning text-white">
-                            Details
-                        </div>
+                        <Link to={`/toy/${_id}`}>
+                            <button className="btn btn-warning text-white">
+                                Details
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

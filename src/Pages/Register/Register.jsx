@@ -2,11 +2,12 @@ import React, { useContext, useState } from "react";
 import { Form, Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import logo from '../../assets/login.svg'
+import Lottie from "react-lottie";
+import animationData   from "../../assets/lottie/register.json";
 
 const Register = () => {
     // const { createUser } = useContext(AuthContext);
-    const { createUser, updateInfo, setUser,logOut } = useContext(AuthContext);
+    const { createUser, updateInfo, setUser, logOut } = useContext(AuthContext);
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
 
@@ -21,7 +22,7 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        
+
         if (!email || !password) {
             setError("Email or password Cann't be empty");
             return;
@@ -46,7 +47,7 @@ const Register = () => {
                             "success"
                         );
                         logOut();
-                        navigate('/login')
+                        navigate("/login");
                     })
                     .catch((error) => {
                         setError(error.message);
@@ -64,16 +65,24 @@ const Register = () => {
             });
         form.reset();
     };
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      };
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
                 <div className="hero-content flex-col lg:flex-row-reverse gap-16">
-                <div className="text-center lg:text-left">
+                    <div className="text-center lg:text-left ">
                         <div>
                             <h1 className="text-5xl font-bold text-warning">
                                 Register now!
                             </h1>
-                            <img src={logo} alt="" className="ps-0 w-9/12 py-5" />
+                            <Lottie options={defaultOptions} height={600} width={600} />
                         </div>
                     </div>
                     <Form
@@ -129,7 +138,7 @@ const Register = () => {
                             </div>
                             <p className="text-md">
                                 {" "}
-                                Already have an account? Please{" "}
+                                Already have an account? Please
                                 <Link to={"/login"} className="text-indigo-500">
                                     Login here
                                 </Link>
@@ -147,7 +156,10 @@ const Register = () => {
                                 )}
                             </div>
                             <div className="form-control mt-2">
-                                <button className="btn btn-warning" type="submit">
+                                <button
+                                    className="btn btn-warning text-white hover:bg-yellow-500"
+                                    type="submit"
+                                >
                                     Signup
                                 </button>
                             </div>

@@ -87,6 +87,18 @@ const Navbar = () => {
                                     </NavLink>
                                 </li>
                             )}
+                            {user && (
+                                <li>
+                                    <NavLink
+                                        to="/addtoy"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
+                                        Add a toy
+                                    </NavLink>
+                                </li>
+                            )}
                             {user?.email ? (
                                 <li>
                                     <button onClick={handleLogout}>
@@ -168,6 +180,18 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                         )}
+                        {user && (
+                                <li>
+                                    <NavLink
+                                        to="/addtoy"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
+                                        Add a toy
+                                    </NavLink>
+                                </li>
+                            )}
                         {user ? (
                             <li>
                                 <button onClick={handleLogout}>Logout</button>

@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddToy = () => {
     const { register, handleSubmit } = useForm();
     const {user} = useContext(AuthContext);
 
     const onSubmit = (data) => {
-    data.Price = parseInt(data.Price);
-    data.Rating = parseFloat(data.Rating);
+        data.Price = parseFloat(data.Price);
+        data.Quantity = parseInt(data.Quantity);
+        data.Rating = parseFloat(data.Rating);
         fetch("http://localhost:5000/addtoy", {
             method: "POST",
             headers: {
@@ -18,7 +20,12 @@ const AddToy = () => {
         })
             .then((res) => res.json())
             .then((newData) => {
-                console.log(newData);
+                Swal.fire(
+                    "Added!",
+                    "Your Toy has been Added!!",
+                    "success"
+                );
+                data.reset();
             });
         // console.log(data);
     };
@@ -60,12 +67,12 @@ const AddToy = () => {
                     className="p-4 border-2 w-96 rounded-lg"
                     {...register("Category", { required: true })}
                 >
-                    <option value="EngineeringToys">Engineering Toys</option>
-                    <option value="MathToys">Math Toys</option>
-                    <option value="ScienceToys">Science Toys</option>
+                    <option value="engineering">Engineering Toys</option>
+                    <option value="board">Board Toys</option>
+                    <option value="puzzle">Puzzle Toys</option>
                 </select>
                 <input
-                    type="number"
+                    type="text"
                     className="p-4 border-2 w-96 rounded-lg"
                     placeholder="Price"
                     {...register("Price", {})}

@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import logo from "../../assets/login.svg";
+import Lottie from "react-lottie";
+import animationData   from "../../assets/lottie/register.json";
+
 const Login = () => {
     const { googleSignIn, setUser, loginWithEmail } = useContext(AuthContext);
 
@@ -46,6 +48,15 @@ const Login = () => {
             });
         form.reset();
     };
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      };
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
@@ -55,11 +66,7 @@ const Login = () => {
                             <h1 className="text-5xl font-bold text-warning">
                                 Login now!
                             </h1>
-                            <img
-                                src={logo}
-                                alt=""
-                                className="ps-0 w-9/12 py-5"
-                            />
+                            <Lottie options={defaultOptions} height={600} width={600} />
                         </div>
                     </div>
                     <Form
@@ -83,14 +90,14 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="password"
                                     name="password"
                                     placeholder="password"
                                     className="input input-bordered"
                                 />
                             </div>
                             <p className="text-md">
-                                {" "}
+                               
                                 New here? Please{" "}
                                 <Link
                                     to={"/register"}
@@ -113,7 +120,7 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-2">
                                 <button
-                                    className="btn btn-warning"
+                                    className="btn btn-warning text-white hover:bg-yellow-500"
                                     type="submit"
                                 >
                                     Login

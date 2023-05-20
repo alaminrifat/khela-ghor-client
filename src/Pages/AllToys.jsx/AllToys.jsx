@@ -39,7 +39,7 @@ const AllToys = () => {
                         name="search"
                         ref={searchInputRef}
                     />
-                    <button className="btn btn-warning" onClick={setSearch}>
+                    <button className="btn btn-warning text-white" onClick={setSearch}>
                         Search
                     </button>
                 </div>
