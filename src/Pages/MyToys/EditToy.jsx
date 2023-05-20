@@ -29,6 +29,7 @@ const EditToy = () => {
     } = toy;
     const onSubmit = (data) => {
         data.Price = parseInt(data.Price);
+        data.Rating = parseFloat(data.Rating);
         Swal.fire({
             title: "Are you sure?",
             text: "You want to edit this toy?",

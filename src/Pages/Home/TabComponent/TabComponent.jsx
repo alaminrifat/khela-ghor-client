@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
+
 const TabComponent = () => {
     const [activeTab, setActiveTab] = useState('puzzle');
+    const [toys,setToys] = useState([]);
     useEffect(()=>{
-        
+        fetch(`http://localhost:5000/toys/${activeTab}`)
+        .then(res => res.json())
+        .then(data => {
+            setToys(data);
+        })
     },[activeTab])
 
     const handleTabClick = (tabname) => {
@@ -12,13 +18,16 @@ const TabComponent = () => {
     };
 
     return (
-        <div className="container mx-auto">
-            <div className="flex justify-center mt-8">
+        <div className="container mx-auto mt-48">
+            <p className=" text-4xl md:text-6xl font-bold text-center  ">
+                Purchase by category
+            </p>
+            <div className="flex justify-center mt-16">
                 <div className="flex ">
                     <div
-                        className={`py-4 px-16 cursor-pointer ${
+                        className={`py-4 px-6 md:py-4 md:px-16 cursor-pointer ${
                             activeTab === 'puzzle'
-                                ? "bg-red-500 text-white"
+                                ? "bg-red-500 text-white font-semibold  "
                                 : "bg-gray-200"
                         }`}
                         onClick={() => handleTabClick('puzzle')}
@@ -26,9 +35,9 @@ const TabComponent = () => {
                         Puzzle
                     </div>
                     <div
-                        className={`py-4 px-16  cursor-pointer ${
+                        className={`py-4 px-6 md:py-4 md:px-16  cursor-pointer ${
                             activeTab === 'board'
-                                ? "bg-red-500 text-white"
+                                ? "bg-red-500 text-white font-semibold  "
                                 : "bg-gray-200"
                         }`}
                         onClick={() => handleTabClick('board')}
@@ -36,9 +45,9 @@ const TabComponent = () => {
                         Board
                     </div>
                     <div
-                        className={`py-4 px-16 cursor-pointer ${
+                        className={`py-4 px-6 md:py-4 md:px-16 cursor-pointer ${
                             activeTab === 'engineering'
-                                ? "bg-red-500 text-white"
+                                ? "bg-red-500 text-white font-semibold  "
                                 : "bg-gray-200"
                         }`}
                         onClick={() => handleTabClick('engineering')}
@@ -48,13 +57,11 @@ const TabComponent = () => {
                 </div>
             </div>
 
-            <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-28">
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
-                    <ProductCard/>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-28 md:ms-0 ms-3 me-3 md:me-0">
+                    {
+                        toys.map(toy => <ProductCard key={toy._id} toy={toy}/>)
+                    }
+                    
             </div>
         </div>
     );
