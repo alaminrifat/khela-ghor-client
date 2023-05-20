@@ -7,7 +7,7 @@ const AddToy = () => {
     const {user} = useContext(AuthContext);
 
     const onSubmit = (data) => {
-        // data.Price = parseInt(data.Price);
+    data.Price = parseInt(data.Price)
         fetch("http://localhost:5000/addtoy", {
             method: "POST",
             headers: {

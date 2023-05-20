@@ -1,5 +1,7 @@
 import CountDown from "../Countdown/CountDown";
+import ProductGallery from "../Gallery/ProductGallery";
 import Howitwork from "../Howitwork/Howitwork";
+import Sales from "../Sales/Sales";
 import Slider from "../Slider/Slider";
 
 
@@ -9,7 +11,9 @@ const Home = () => {
         <div>
             <Slider/>
             <Howitwork/>
-            <CountDown/>
+            <Sales/>
+            <ProductGallery/>
+            {/* <CountDown/> */}
         </div>
     );
 };
