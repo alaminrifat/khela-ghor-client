@@ -1,14 +1,17 @@
-import logo from '../../assets/logo.png'
+import logo from "../../assets/logo.png";
 const Footer = () => {
     const handleClick = () => {
-        window.scrollTo(0,0);
-      }
+        window.scrollTo(0, 0);
+    };
     return (
-        <footer aria-label="Site Footer" className="bg-gray-200 border-t-4 border-warning ">
+        <footer
+            aria-label="Site Footer"
+            className="bg-gray-200 border-t-4 border-warning "
+        >
             <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
                 <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
                     <button
-                    onClick={handleClick}
+                        onClick={handleClick}
                         className="inline-block rounded-full bg-warning p-2 text-white shadow transition hover:bg-teal-500 sm:p-3 lg:p-4"
                         href="#MainContent"
                     >
@@ -32,17 +35,17 @@ const Footer = () => {
                 <div className="lg:flex lg:items-end lg:justify-between">
                     <div>
                         <div className="flex justify-center text-teal-600 lg:justify-start">
-                            <img src={logo} alt="" className='w-24'/>
-                            
+                            <img src={logo} alt="" className="w-24" />
                         </div>
-                        <h1 className='text-2xl font-bold'>Khela Ghor</h1>
-                        <p>
-                            Trusted Kids Scientific Toys
-                        </p>
+                        <h1 className="text-2xl font-bold">Khela Ghor</h1>
+                        <p>Trusted Kids Scientific Toys</p>
                         <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 lg:text-left">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Incidunt consequuntur amet culpa cum itaque
-                            neque.
+                            Discover a world of scientific wonder at Khela Ghor,
+                            your premier destination for educational toys and
+                            resources. Our carefully curated collection brings
+                            science to life, engaging young minds through
+                            hands-on experiments and captivating discoveries.
+                            
                         </p>
                     </div>
 
