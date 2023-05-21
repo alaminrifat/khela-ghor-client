@@ -1,5 +1,7 @@
 
 import setTitle from "../../../hook/setTitle";
+import CustomerReview from "../CustomerReview/CustomerReview";
+import FindUs from "../FindUs/FindUs";
 import ProductGallery from "../Gallery/ProductGallery";
 import Howitwork from "../Howitwork/Howitwork";
 import Sales from "../Sales/Sales";
@@ -17,6 +19,8 @@ const Home = () => {
             <Sales/>
             <ProductGallery/>
             <TabComponent/>
+            <CustomerReview/>
+            <FindUs/>
         </div>
     );
 };
