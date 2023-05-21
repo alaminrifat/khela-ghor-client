@@ -6,7 +6,7 @@ import setTitle from "../hook/setTitle";
 
 const AddToy = () => {
     setTitle('Add a toy');
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,reset } = useForm();
     const {user} = useContext(AuthContext);
 
     const onSubmit = (data) => {
@@ -29,7 +29,7 @@ const AddToy = () => {
                     "Your Toy has been Added!!",
                     "success"
                 );
-                data.reset();
+                reset();
             });
         // console.log(data);
     };
