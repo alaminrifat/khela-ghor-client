@@ -4,9 +4,11 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import setTitle from "../../hook/setTitle";
 
 const EditToy = () => {
     const navigate = useNavigate();
+    setTitle('Edit Toy');
 
     const { register, handleSubmit } = useForm();
     const { user } = useContext(AuthContext);
@@ -39,12 +41,13 @@ const EditToy = () => {
             confirmButtonText: "Yes, Edit my toy!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/edittoy/${_id}`, {
+                fetch(`https://khela-ghor-server.vercel.app/edittoy/${_id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(data),
+                    mode: 'cors'
                 })
                     .then((res) => res.json())
                     .then((data) => {
@@ -145,7 +148,9 @@ const EditToy = () => {
                                         <option value="engineering">
                                             Engineering Toys
                                         </option>
-                                        <option value="board">Board Toys</option>
+                                        <option value="board">
+                                            Board Toys
+                                        </option>
                                         <option value="puzzle">
                                             Puzzle Toys
                                         </option>

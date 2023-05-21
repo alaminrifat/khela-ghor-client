@@ -3,8 +3,11 @@ import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Lottie from "react-lottie";
 import animationData   from "../../assets/lottie/register.json";
+import setTitle from "../../hook/setTitle";
 
 const Login = () => {
+    setTitle('Login');
+
     const { googleSignIn, setUser, loginWithEmail } = useContext(AuthContext);
 
     const [status, setStatus] = useState(null);

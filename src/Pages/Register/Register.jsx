@@ -4,8 +4,11 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import Lottie from "react-lottie";
 import animationData   from "../../assets/lottie/register.json";
+import setTitle from "../../hook/setTitle";
 
 const Register = () => {
+    setTitle('Register');
+
     // const { createUser } = useContext(AuthContext);
     const { createUser, updateInfo, setUser, logOut } = useContext(AuthContext);
     const [status, setStatus] = useState(null);

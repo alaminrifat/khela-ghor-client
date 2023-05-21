@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import Toysrow from "./Toysrow";
 import { useRef } from "react";
+import setTitle from "../../hook/setTitle";
 
 const AllToys = () => {
     const [toys, setToys] = useState([]);
     const [searchItem, setSearchItem] = useState(null);
     const searchInputRef = useRef(null);
+    setTitle('All Toys');
 
     useEffect(() => {
         if (searchItem) {
-            fetch(`http://localhost:5000/toys?name=${searchItem}`)
+            fetch(`https://khela-ghor-server.vercel.app/toys?name=${searchItem}`)
                 .then((res) => res.json())
                 .then((data) => {
                     setToys(data);
                 });
         } else if (!searchItem) {
-            fetch(`http://localhost:5000/toys`)
+            fetch(`https://khela-ghor-server.vercel.app/toys`)
                 .then((res) => res.json())
                 .then((data) => {
                     setToys(data);

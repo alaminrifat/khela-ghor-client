@@ -2,15 +2,18 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MyToysrow from "./MyToysrow";
 import Swal from "sweetalert2";
+import setTitle from "../../hook/setTitle";
 
 const MyToys = () => {
+    setTitle('My Toys');
+
     const [myToys, setMyToys] = useState([]);
     const [sort, setSort] = useState('x');
     const { user } = useContext(AuthContext);
     const email = user?.email;
     useEffect(() => {
         console.log(sort);
-        fetch(`http://localhost:5000/mytoys?email=${email}&sort=${sort}`)
+        fetch(`https://khela-ghor-server.vercel.app/mytoys?email=${email}&sort=${sort}`)
             .then((res) => res.json())
             .then((data) => {
                 setMyToys(data);
@@ -29,7 +32,7 @@ const MyToys = () => {
             confirmButtonText: "Yes, delete my toy!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/mytoys/${id}`, {
+                fetch(`https://khela-ghor-server.vercel.app/mytoys/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

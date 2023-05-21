@@ -50,7 +50,7 @@ const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/toy/${params.id}`, {
+                    fetch(`https://khela-ghor-server.vercel.app/toy/${params.id}`, {
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
                 path: "edittoy/:id",
                 element: <EditToy />,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/toy/${params.id}`, {
+                    fetch(`https://khela-ghor-server.vercel.app/toy/${params.id}`, {
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
