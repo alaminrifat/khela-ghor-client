@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import  { createContext, useEffect, useState } from "react";
 import {
     createUserWithEmailAndPassword,
     getAuth,
@@ -69,6 +69,7 @@ const AuthProvider = ({ children }) => {
         loading,
         photo,
         name,
+        setLoading
     };
 
     return (

@@ -3,20 +3,24 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import MyToysrow from "./MyToysrow";
 import Swal from "sweetalert2";
 import setTitle from "../../hook/setTitle";
-
+import { FadeLoader } from "react-spinners";
 const MyToys = () => {
     setTitle('My Toys');
 
     const [myToys, setMyToys] = useState([]);
     const [sort, setSort] = useState('x');
     const { user } = useContext(AuthContext);
+    const [loading, setLoading] = useState(true);
     const email = user?.email;
     useEffect(() => {
+        setLoading(true);
         // console.log(sort);
         fetch(`https://khela-ghor-server.vercel.app/mytoys?email=${email}&sort=${sort}`)
             .then((res) => res.json())
             .then((data) => {
+                setLoading(false);
                 setMyToys(data);
+                
             });
     }, [sort, email]);
 
@@ -48,6 +52,7 @@ const MyToys = () => {
                                 (toys) => toys._id !== id
                             );
                             setMyToys(remaining);
+                            
                         }
                     });
             }
@@ -85,7 +90,9 @@ const MyToys = () => {
                     Descending
                 </button>
             </div>
-            <div className="overflow-x-auto">
+            {
+                loading ? <><div className="h-[600px] flex items-center justify-center"><FadeLoader color="#36d7b7"      /></div> </>:
+                <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     {/* head */}
                     <thead>
@@ -112,6 +119,7 @@ const MyToys = () => {
                     </tbody>
                 </table>
             </div>
+            }
         </div>
     );
 };

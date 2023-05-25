@@ -1,12 +1,25 @@
 import { Link } from "react-router-dom";
 
 const Toysrow = ({ toy, serial }) => {
-    const { ToyName, SellerName, Category, Price, Quantity, _id } = toy;
+    const { ToyName, SellerName, Category, Price, Quantity, _id, PictureUrl } =
+        toy;
     // console.log('done');
     return (
         <tr>
             <td> {serial} </td>
-            <td>{ToyName}</td>
+            <td className="flex items-center gap-4">
+                <div className="avatar">
+                    <div className="mask mask-squircle w-20 h-20">
+                        <img
+                            src={PictureUrl}
+                            alt="Avatar Tailwind CSS Component"
+                        />
+                    </div>
+                </div>
+                <div className="font-semibold">
+                {ToyName}
+                </div>
+            </td>
             <td>{SellerName}</td>
             <td>{Category}</td>
             <td>{Price}</td>

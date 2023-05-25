@@ -34,11 +34,14 @@ const Slider = () => {
                         alt=""
                         className="w-full"
                     />
+                    <div className="absolute inset-0">
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-800"></div>
+                    </div>
                     <figcaption className="absolute inset-0 flex flex-col  justify-center me-4 md:me-20 text-black ">
-                        <p className="text-base md:text-6xl font-bold text-indigo-900 mx-4 text-end  ">
+                        <p className="text-base md:text-6xl font-bold text-white mx-4 text-end  ">
                             Inspiring children to
                         </p>
-                        <p className="text-base md:text-6xl font-bold text-indigo-900 mx-4 text-end mt-0 md:mt-8">
+                        <p className="text-base md:text-6xl font-bold text-white mx-4 text-end mt-0 md:mt-8">
                             think outside the box.
                         </p>
                     </figcaption>
@@ -51,11 +54,14 @@ const Slider = () => {
                         alt=""
                         className="w-full"
                     />
+                    <div className="absolute inset-0">
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-800"></div>
+                    </div>
                     <figcaption className="absolute inset-0 flex flex-col  justify-center me-4 md:me-20 text-black ">
-                        <p className="text-base md:text-6xl font-bold text-indigo-500 mx-4 text-end ">
+                        <p className="text-base md:text-6xl font-bold text-white mx-4 text-end ">
                             Encourages children to
                         </p>
-                        <p className="text-base md:text-6xl font-bold text-indigo-500 mx-4 text-end mt-0 md:mt-8">
+                        <p className="text-base md:text-6xl font-bold text-white mx-4 text-end mt-0 md:mt-8">
                             {" "}
                             embrace curiosity.
                         </p>
@@ -69,11 +75,14 @@ const Slider = () => {
                         alt=""
                         className="w-full"
                     />
-                    <figcaption className="absolute inset-0 flex flex-col  justify-center me-4 md:me-20 text-black ">
-                        <p className="text-base md:text-6xl font-bold text-gray-600 mx-4 text-end ">
+                    <div className="absolute inset-0">
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-800"></div>
+                    </div>
+                    <figcaption className="absolute inset-0 flex flex-col justify-center me-4 md:me-20 text-black">
+                        <p className="text-base md:text-6xl font-bold text-white mx-4 text-end">
                             Sparks creativity by
                         </p>
-                        <p className="text-base md:text-6xl font-bold text-gray-600 mx-4 text-end mt-0 md:mt-8">
+                        <p className="text-base md:text-6xl font-bold text-white mx-4 text-end mt-0 md:mt-8">
                             offering a diverse.
                         </p>
                     </figcaption>

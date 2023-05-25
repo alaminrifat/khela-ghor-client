@@ -2,25 +2,29 @@ import { useEffect, useState } from "react";
 import Toysrow from "./Toysrow";
 import { useRef } from "react";
 import setTitle from "../../hook/setTitle";
-
+import { FadeLoader } from "react-spinners";
 const AllToys = () => {
     const [toys, setToys] = useState([]);
     const [searchItem, setSearchItem] = useState(null);
     const searchInputRef = useRef(null);
     setTitle('All Toys');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         if (searchItem) {
             fetch(`https://khela-ghor-server.vercel.app/toys?name=${searchItem}`)
                 .then((res) => res.json())
                 .then((data) => {
                     setToys(data);
+                    setLoading(false);
                 });
         } else if (!searchItem) {
             fetch(`https://khela-ghor-server.vercel.app/toys`)
                 .then((res) => res.json())
                 .then((data) => {
                     setToys(data);
+                    setLoading(false);
                 });
         }
     }, [searchItem]);
@@ -46,7 +50,9 @@ const AllToys = () => {
                     </button>
                 </div>
             </div>
-            <div className="overflow-x-auto">
+            {
+                loading? <><div className="h-[600px] flex items-center justify-center"><FadeLoader color="#36d7b7"      /></div> </>:
+                <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     {/* head */}
                     <thead>
@@ -72,6 +78,7 @@ const AllToys = () => {
                     </tbody>
                 </table>
             </div>
+            }
         </div>
     );
 };

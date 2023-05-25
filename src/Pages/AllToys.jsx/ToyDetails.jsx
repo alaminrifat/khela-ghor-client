@@ -2,8 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import ReactStarsRating from "react-awesome-stars-rating";
 import setTitle from "../../hook/setTitle";
 const ToyDetails = () => {
-
     const toy = useLoaderData();
+   
     const {
         PictureUrl,
         ToyName,
@@ -16,8 +16,8 @@ const ToyDetails = () => {
         
     } = toy;
     const ratingValue = parseFloat(Rating);
-    console.log(toy);
     setTitle(`${ToyName}`);
+    
 
     return (
         <section>
