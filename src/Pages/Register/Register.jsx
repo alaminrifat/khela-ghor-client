@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
-import { Form, Link, Navigate, useNavigate } from "react-router-dom";
+import  { useContext, useState } from "react";
+import { Form, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import Lottie from "react-lottie";
-import animationData   from "../../assets/lottie/register.json";
+import animationData from "../../assets/lottie/register.json";
 import setTitle from "../../hook/setTitle";
-
+import { isValidEmail, isValidPassword } from "../../utils/validation";
 const Register = () => {
-    setTitle('Register');
+    setTitle("Register");
 
     // const { createUser } = useContext(AuthContext);
     const { createUser, updateInfo, setUser, logOut } = useContext(AuthContext);
@@ -30,9 +30,15 @@ const Register = () => {
             setError("Email or password Cann't be empty");
             return;
         }
+        if (!isValidEmail(email)) {
+            setError("Invalid email address");
+            return;
+        }
 
-        if (password.length < 6) {
-            setError("Password must be more then 6 character");
+        if (!isValidPassword(password)) {
+            setError(
+                "Invalid password. Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, and one digit."
+            );
             return;
         }
 
@@ -42,7 +48,7 @@ const Register = () => {
                 setUser(result.user);
                 setStatus("Account Created!! Please Login");
                 updateInfo(name, photo)
-                    .then((result) => {
+                    .then(() => {
                         setStatus("Account Created!! Please Login");
                         Swal.fire(
                             "Registered Success",
@@ -73,19 +79,24 @@ const Register = () => {
         autoplay: true,
         animationData: animationData,
         rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice'
-        }
-      };
+            preserveAspectRatio: "xMidYMid slice",
+        },
+    };
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
-                <div className="hero-content flex-col lg:flex-row-reverse gap-16">
-                    <div className="text-center lg:text-left ">
+                <div className="hero-content flex-col lg:flex-row-reverse gap-0 md:gap-16">
+                    <div className="text-center">
                         <div>
                             <h1 className="text-5xl font-bold text-warning">
                                 Register now!
                             </h1>
-                            <Lottie options={defaultOptions} height={600} width={600} />
+                            <Lottie
+                                options={defaultOptions}
+                                // height={600}
+                                // width={600}
+                                className="w-[600px]"
+                            />
                         </div>
                     </div>
                     <Form

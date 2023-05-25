@@ -13,8 +13,7 @@ const ToyDetails = () => {
         Quantity,
         Rating,
         Description,
-        Category,
-        _id,
+        
     } = toy;
     const ratingValue = parseFloat(Rating);
     console.log(toy);

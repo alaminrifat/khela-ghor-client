@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Lottie from "react-lottie";
-import animationData   from "../../assets/lottie/register.json";
+import animationData from "../../assets/lottie/register.json";
 import setTitle from "../../hook/setTitle";
 
 const Login = () => {
-    setTitle('Login');
+    setTitle("Login");
 
     const { googleSignIn, setUser, loginWithEmail } = useContext(AuthContext);
 
@@ -57,19 +57,24 @@ const Login = () => {
         autoplay: true,
         animationData: animationData,
         rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice'
-        }
-      };
+            preserveAspectRatio: "xMidYMid slice",
+        },
+    };
     return (
         <div>
             <div className="hero min-h-screen bg-base-100">
-                <div className="hero-content flex-col lg:flex-row-reverse justify-center ">
-                    <div className="text-center lg:text-left">
+            <div className="hero-content flex-col lg:flex-row-reverse gap-1 md:gap-16">
+                    <div className="text-center">
                         <div>
                             <h1 className="text-5xl font-bold text-warning">
-                                Login now!
+                                Login Now
                             </h1>
-                            <Lottie options={defaultOptions} height={600} width={600} />
+                            <Lottie
+                                options={defaultOptions}
+                                // height={600}
+                                // width={600}
+                                className="w-[600px]"
+                            />
                         </div>
                     </div>
                     <Form
@@ -100,7 +105,6 @@ const Login = () => {
                                 />
                             </div>
                             <p className="text-md">
-                               
                                 New here? Please{" "}
                                 <Link
                                     to={"/register"}

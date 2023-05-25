@@ -12,7 +12,7 @@ const MyToys = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
     useEffect(() => {
-        console.log(sort);
+        // console.log(sort);
         fetch(`https://khela-ghor-server.vercel.app/mytoys?email=${email}&sort=${sort}`)
             .then((res) => res.json())
             .then((data) => {
@@ -107,7 +107,7 @@ const MyToys = () => {
                                 toy={toy}
                                 serial={index + 1}
                                 handleDelete={handleDelete}
-                            ></MyToysrow>
+                            ></MyToysrow> 
                         ))}
                     </tbody>
                 </table>

@@ -23,7 +23,7 @@ const AddToy = () => {
             mode: 'cors'
         })
             .then((res) => res.json())
-            .then((newData) => {
+            .then(() => {
                 Swal.fire(
                     "Added!",
                     "Your Toy has been Added!!",
